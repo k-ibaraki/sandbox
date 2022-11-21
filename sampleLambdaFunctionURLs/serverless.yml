@@ -1,0 +1,14 @@
+service: lambdaURLsSampleIbaraki
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  profile: sandbox
+  stage: dev
+  region: ap-northeast-1
+  runtime: nodejs16.x
+
+functions:
+  hello:
+    handler: handler.hello
+    url: true # Lambda Function URLs有効化
