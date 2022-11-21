@@ -1,0 +1,22 @@
+name: output-sample
+
+on: push
+
+jobs:
+  output-sample:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: "actions/checkout@v3"
+
+      # 日時を取得
+      - name: get Current datetime
+        run: |
+          DATETIME=`TZ='Asia/Tokyo' date '+%F-%H%M%S'`
+          echo "CONFIG=${DATETIME}" >> $GITHUB_OUTPUT
+        id: datetime
+
+      # 日時を出力
+      - name: echo datetime
+        run: echo ${{steps.datetime.outputs.CONFIG }}
